@@ -169,6 +169,14 @@ h1{
   font-size:2.2rem;
 }
 
+.white-block {
+    color: white;        /* makes the square white */
+    font-size: 1.6rem;   /* adjust size to fill the circle nicely */
+    font-weight: bold;    /* makes it solid */
+    display: inline-block;
+}
+
+
 .buttons{
   position:relative;
   height:120px;
@@ -260,13 +268,13 @@ h1{
 
   <!-- MUSIC -->
 <div id="music" class="section">
-  <p>our song.</p>
+  <p>a song that reminds me of you.</p>
 
   <!-- Title Row -->
   <div style="display:flex;align-items:center;gap:10px;margin-bottom:15px;">
     <span style="color:var(--red);font-size:1.6rem;">♥</span>
     <span style="font-size:1.3rem;color:var(--red);font-family:var(--heading);">
-      last seven minutes
+      my last seven minutes
     </span>
   </div>
 
@@ -307,7 +315,8 @@ h1{
     </button>
   </div>
 
-  <audio id="song" src="songg.mp3"></audio>
+  <audio id="song" src="https://drive.google.com/uc?export=download&id=1Xv7lJ3iDtU2ZN2TSQCsoDpnTWLTZfkSo" loop></audio>
+
 </div>
 
 
@@ -360,6 +369,12 @@ h1{
 
 <script>
 const song = document.getElementById("song");
+
+song.addEventListener('ended', () => {
+    song.currentTime = 0; // go back to start
+    song.play();           // play again
+});
+
 const disc = document.getElementById("disc");
 const no   = document.getElementById("no");
 const progressBar = document.getElementById("progressBar");
