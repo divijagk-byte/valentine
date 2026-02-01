@@ -170,12 +170,11 @@ h1{
 }
 
 .white-block {
-    color: white;        /* makes the square white */
-    font-size: 1.6rem;   /* adjust size to fill the circle nicely */
-    font-weight: bold;    /* makes it solid */
+    color: white;        
+    font-size: 1.6rem;   
+    font-weight: bold;    
     display: inline-block;
 }
-
 
 .buttons{
   position:relative;
@@ -199,11 +198,12 @@ h1{
   left:50%;
   transform:translateX(-50%);
 }
+
 .under-img {
     display: block;
-    width: 170px;       /* adjust size as you like */
-    height: auto;       /* keep aspect ratio */
-    margin: 1px auto 0; /* space above image, center it */
+    width: 170px;      
+    height: auto;      
+    margin: 1px auto 0; 
 }
 
 #no{
@@ -211,25 +211,6 @@ h1{
   top:60px;
   left:50%;
   transform:translateX(-50%);
-}
-
-/* PROGRESS BAR THUMB */
-#progressBar::-webkit-slider-thumb{
-  -webkit-appearance:none;
-  width:14px;
-  height:14px;
-  background:var(--red);
-  border-radius:50%;
-  cursor:pointer;
-  margin-top:-4px;
-}
-
-#progressBar::-moz-range-thumb{
-  width:14px;
-  height:14px;
-  background:var(--red);
-  border-radius:50%;
-  cursor:pointer;
 }
 
 /* FINAL */
@@ -280,11 +261,7 @@ h1{
 
   <!-- ROW: CD + WAVEFORM -->
   <div style="display:flex;align-items:center;gap:25px;justify-content:center;">
-
-    <!-- Rotating CD -->
     <div class="circle" id="disc" onclick="toggleMusic()"><span>♥</span></div>
-
-    <!-- WAVEFORM -->
     <div id="wave" style="display:flex;gap:6px;height:80px;align-items:flex-end;">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -292,7 +269,6 @@ h1{
       <div class="bar"></div>
       <div class="bar"></div>
     </div>
-
   </div>
 
   <!-- Play / Pause Button -->
@@ -315,10 +291,9 @@ h1{
     </button>
   </div>
 
+  <!-- Audio -->
   <audio id="song" src="songg.mp3" loop></audio>
-
 </div>
-
 
 <!-- GALLERY -->
 <div id="gallery" class="section">
@@ -343,49 +318,42 @@ h1{
     </div>
 </div>
 
-
-  <!-- LETTER -->
-  <div id="letter" class="section">
-    <h2 style="color:var(--red);font-family:var(--heading);">a little note.</h2>
-    <div class="letter-box">
-      This past year with you has been my safest place. From our monthly tandoori dates (which somehow taste better just because it’s us heheee) to the quiet moments where nothing else mattered, every memory is always in my heart. I love the way your eyes shrink when you smile, those dimples , and your silky hair that I secretly wish I could run my fingers through forever. my cutuuu bujjukutty you are one , and I don’t think I’ll ever stop feeling that way about you.
-
-I wish I could hug you every night,just hold you close and feel like everything is okay for a moment. Even on days when we argue, even when things feel heavy, my love for you never fades. We’ve had our share of fights and misunderstandings, but despite all of that, my heart always chooses you.
-
-You are home to me. You are comfort, warmth, laughter, and love—all wrapped into one person. And no matter what comes our way, I want you to know this: I will forever love you. Always. Through the good days, the messy ones, and everything in between.
-
-It’s you. It has always been you. 
-    </div>
+<!-- LETTER -->
+<div id="letter" class="section">
+  <h2 style="color:var(--red);font-family:var(--heading);">a little note.</h2>
+  <div class="letter-box">
+    <!-- Your letter here -->
+    I love you, always and forever…
   </div>
+</div>
 
-  <!-- QUESTION -->
-  <div id="question" class="section question">
-    <h2>will you be my valentine?</h2>
-    <div class="buttons">
-      <button id="yes" onclick="final()">yes</button>
-      <button id="no">no</button>
-    </div>
+<!-- QUESTION -->
+<div id="question" class="section question">
+  <h2>will you be my valentine?</h2>
+  <div class="buttons">
+    <button id="yes" onclick="final()">yes</button>
+    <button id="no">no</button>
   </div>
+</div>
 
-  <!-- FINAL -->
-  <div id="final" class="final">
-    <h1>Yayyy,i love you sooo much.Mwah .To more years of us♥.</h1>
-  </div>
+<!-- FINAL -->
+<div id="final" class="final">
+  <h1>Yayyy, I love you sooo much. Mwah. To more years of us♥.</h1>
+</div>
 </div>
 
 <script>
 const song = document.getElementById("song");
-
-song.addEventListener('ended', () => {
-    song.currentTime = 0; // go back to start
-    song.play();           // play again
-});
-
 const disc = document.getElementById("disc");
 const no   = document.getElementById("no");
-const progressBar = document.getElementById("progressBar");
 
 let isPlaying = false;
+
+// Ensure song loops even if 'loop' fails
+song.addEventListener('ended', () => {
+    song.currentTime = 0;
+    song.play();
+});
 
 function openSection(id){
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
@@ -413,7 +381,6 @@ function toggleMusic(){
   }
 }
 
-
 function toggleMusicButton(){
   toggleMusic(); 
 }
@@ -427,19 +394,8 @@ function final(){
   document.querySelectorAll('.section, .menu').forEach(e=>e.style.display="none");
   document.getElementById("final").style.display="flex";
 }
-
-// Progress bar updates
-song.addEventListener("timeupdate", () => {
-  const percentage = (song.currentTime / song.duration) * 100;
-  progressBar.value = percentage;
-});
-
-// Drag to seek
-progressBar.addEventListener("input", () => {
-  const time = (progressBar.value / 100) * song.duration;
-  song.currentTime = time;
-});
 </script>
 
 </body>
 </html>
+
